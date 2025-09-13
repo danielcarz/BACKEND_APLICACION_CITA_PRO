@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Prueba - Servidor Express</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Prueba: servidor Express + HTML estático</h1>
+    <p class="muted">Archivo de prueba — no forma parte del backend</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Formulario de prueba</h2>
+      <p>Ingresa un nombre y prueba la interacción del cliente (no requiere backend).</p>
+
+      <form id="testForm">
+        <label for="name">Nombre</label>
+        <input id="name" name="name" type="text" placeholder="Tu nombre" />
+
+        <div class="actions">
+          <button type="submit">Mostrar saludo (cliente)</button>
+          <button id="echoBtn" type="button">Enviar al servidor (POST /api/echo)</button>
+        </div>
+      </form>
+
+      <div id="result" class="result" aria-live="polite"></div>
+    </section>
+
+    <section class="card small">
+      <h3>Notas</h3>
+      <ul>
+        <li>Archivo estático servido por Express desde la carpeta <code>/public</code>.</li>
+        <li>Puedes ampliar este HTML para probar rutas, fetch, etc.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>Prueba local — Express · Node.js</small>
+  </footer>
+
+  <script>
+    // interacción simple en cliente
+    const form = document.getElementById('testForm');
+    const result = document.getElementById('result');
+    const echoBtn = document.getElementById('echoBtn');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      result.textContent = name ? `Hola ${name} — mensaje generado en el cliente.` : 'Hola — escribe tu nombre.';
+    });
+
+    // ejemplo opcional: POST al servidor /api/echo
+    echoBtn.addEventListener('click', async () => {
+      const name = document.getElementById('name').value.trim();
+      try {
+        const res = await fetch('/api/echo', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name })
+        });
+        const data = await res.json();
+        result.textContent = data.message || JSON.stringify(data);
+      } catch (err) {
+        result.textContent = 'Error al conectar con el servidor: ' + err.message;
+      }
+    });
+  </script>
+</body>
+</html>
