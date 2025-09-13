@@ -1,0 +1,23 @@
+{
+  "name": "2_backend_aplicacion_cita_pro",
+  "version": "1.0.0",
+  "description": "aplication of backend citaPro of the SENA project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielcarz/BACKEND_APLICACION_CITA_PRO.git"
+  },
+  "keywords": [
+    "citapro",
+    "citaPro"
+  ],
+  "author": "Daniel carmona zapata",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danielcarz/BACKEND_APLICACION_CITA_PRO/issues"
+  },
+  "homepage": "https://github.com/danielcarz/BACKEND_APLICACION_CITA_PRO#readme"
+}
