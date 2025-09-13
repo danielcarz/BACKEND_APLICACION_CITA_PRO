@@ -1,7 +1,10 @@
 const express = require('express');
+require('dotenv').config();
+
 
 //create express app
 const app = express();
+
 
 //routes
 app.use( express.static('public') );
@@ -18,9 +21,9 @@ app.get('/', (req, res)=>{
 });
 
 */
-
+ 
 
 //listen for requests
-app.listen(4000, ()=>{
-    console.log("server started at port 3000");
+app.listen(process.env.PORT, ()=>{
+    console.log(`server started at port  ${process.env.PORT}`);
 })
