@@ -2,12 +2,17 @@ const express = require('express');
 require('dotenv').config();
 
 
+const { createUser } = require('./controllers/auth');
+
+
 //create express app
 const app = express();
 
 
 //routes
 app.use( express.static('public') );
+
+app.use( '/api/auth', require('./routes/auth') );
 
 
 /* 
