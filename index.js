@@ -8,6 +8,10 @@ const { createUser } = require('./controllers/auth');
 //create express app  
 const app = express();
 
+// parse incoming JSON and urlencoded payloads
+app.use( express.json() );
+app.use( express.urlencoded({ extended: true }) );
+
 
 //routes
 app.use( express.static('public') );

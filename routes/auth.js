@@ -9,20 +9,28 @@ aplication of routes for users
 const { Router } = require('express');
 const router = Router();
 
-const { createUser, loginUser } = require('../controllers/auth');
+const { createUser, loginUser, renewUser, getRenewUser } = require('../controllers/auth');
 
 
 
-router.post('/new', createUser )
+//GET request
 
-router.post('/login', loginUser )
+router.get( '/renew', getRenewUser );
 
-router.post('/renew', (req, res) => {
+//POST request
 
-    res.json(
-        {ok: true, msg: 'renew' }
-    )
-})
+router.post('/new', createUser );
+
+router.post('/login', loginUser );
+
+
+
+router.post('/renew', renewUser );
+
+
+
+
+
 
 
 
