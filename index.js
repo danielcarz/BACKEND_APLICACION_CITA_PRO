@@ -4,8 +4,8 @@ require('dotenv').config();
 
 const { createUser } = require('./controllers/auth');
 
-
-//create express app
+ 
+//create express app  
 const app = express();
 
 
@@ -24,7 +24,7 @@ app.get('/', (req, res)=>{
 
 
 });
-
+ 
 */
  
 
