@@ -8,6 +8,7 @@ aplication of routes for users
 
 const { Router } = require('express');
 const router = Router();
+const { check } = require('express-validator');
 
 const { createUser, loginUser, renewUser, getRenewUser } = require('../controllers/auth');
 
@@ -19,7 +20,11 @@ router.get( '/renew', getRenewUser );
 
 //POST request
 
-router.post('/new', createUser );
+router.post(
+    
+    '/new', 
+    check('name', 'El nombre es obligatorio').not().isEmpty(),
+    createUser );
 
 router.post('/login', loginUser );
 

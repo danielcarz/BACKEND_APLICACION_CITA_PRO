@@ -1,8 +1,13 @@
 const { response } = require('express');
+const {  validationResult } = require('express-validator');
 
 const  createUser =  (req, res = response ) => {
 
     const { name, email,  password } = req.body;
+
+    const error = validationResult(req);
+
+    console.log(error);
 
     if( name.length  <= 5 ){
        
