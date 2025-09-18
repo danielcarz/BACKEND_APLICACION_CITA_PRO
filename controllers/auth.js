@@ -5,15 +5,7 @@ const  createUser =  (req, res = response ) => {
 
     const { name, email,  password } = req.body;
 
-    //error validation
-    const error = validationResult(req);
-    if( !error.isEmpty() ){
-        
-        return res.status(400).json({
-            ok: false,
-            errors: error.mapped()
-        });
-    }
+    
 
 
     if( name.length  <= 5 ){
@@ -27,6 +19,7 @@ const  createUser =  (req, res = response ) => {
 
     // For now return received values and the empty user template
     res.json({
+        
         ok: true,
         msg: 'create user',
         name,

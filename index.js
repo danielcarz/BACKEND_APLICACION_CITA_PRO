@@ -3,10 +3,14 @@ require('dotenv').config();
 
 
 const { createUser } = require('./controllers/auth');
+const { dbConnection } = require('./DataBase/config');
 
  
 //create express app  
 const app = express();
+
+//DB conection
+dbConnection();
 
 // parse incoming JSON and urlencoded payloads
 app.use( express.json() );
